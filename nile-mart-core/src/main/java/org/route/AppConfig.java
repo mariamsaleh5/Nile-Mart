@@ -1,43 +1,18 @@
 package org.route;
 
-
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-
-import java.math.BigDecimal;
-
+import org.springframework.context.annotation.Bean;
 
 @Configuration
-@ComponentScan
-//@ImportResource("/beans.xml")
-@PropertySource("/application.properties")
-@EnableAspectJAutoProxy
+@ComponentScan(basePackages = "org.route")
+@PropertySource("classpath:application.properties")
 public class AppConfig {
 
     @Bean
-    PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+    public static PropertySourcesPlaceholderConfigurer propertyConfigurer() {
         return new PropertySourcesPlaceholderConfigurer();
     }
-
-//    @Bean
-//    @Scope("prototype")
-//    ProductService productService(){
-//        return new ProductService(inMemoryProductRepository(), standardPricingService());
-//    }
-//
-//    @Bean
-//    InMemoryProductRepository inMemoryProductRepository() {
-//        return new InMemoryProductRepository();
-//    }
-//
-//    @Bean
-//    StandardPricingService standardPricingService() {
-//        return new StandardPricingService();
-//    }
-//
-//    @Bean
-//    PromotionalPricingService promotionalPricingService() {
-//        return new PromotionalPricingService(BigDecimal.valueOf(10));
-//    }
-
 }
